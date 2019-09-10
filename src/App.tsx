@@ -1,5 +1,5 @@
 import React from "react";
-import Error from "./pages/Error";
+import { Route } from "react-router";
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
 import SingleRoom from "./pages/SingleRoom";
@@ -7,10 +7,9 @@ import SingleRoom from "./pages/SingleRoom";
 const App: React.FC = () => {
   return (
     <>
-      <Home />
-      <Rooms />
-      <SingleRoom />
-      <Error />
+      <Route path="/" component={Home} />
+      <Route path="/rooms/" component={Rooms} />
+      <Route path="/single-room" component={SingleRoom} />
     </>
   );
 };
