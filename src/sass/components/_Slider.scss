@@ -1,0 +1,22 @@
+.slider {
+  &-center {
+    width: 90vw;
+    margin: 0 auto;
+  }
+
+  &-arrows {
+    color: $primary-color;
+
+    &-left {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+    }
+
+    &-right {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+    }
+  }
+}

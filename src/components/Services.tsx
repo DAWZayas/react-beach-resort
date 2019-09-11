@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import { FaBeer, FaCocktail, FaHiking, FaShuttleVan } from "react-icons/fa";
+import {
+  FaBeer,
+  FaCocktail,
+  FaHiking,
+  FaShuttleVan,
+  FaTaxi,
+  FaUmbrellaBeach,
+  FaWheelchair
+} from "react-icons/fa";
+import Slider from "./Slider";
 import Title from "./Title";
 
 const services = [
@@ -25,34 +34,52 @@ const services = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, temporibus!"
   },
   {
-    id: 3,
+    id: 4,
     icon: <FaBeer />,
     title: "Strongest Beer",
     info:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, non?"
+  },
+  {
+    id: 5,
+    icon: <FaTaxi />,
+    title: "Airport transportation",
+    info:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, minima."
+  },
+  {
+    id: 6,
+    icon: <FaUmbrellaBeach />,
+    title: "Hammock Service",
+    info:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, tempore?"
+  },
+  {
+    id: 7,
+    icon: <FaWheelchair />,
+    title: "Adapted accesses",
+    info:
+      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam, tempore?"
   }
 ];
+
+const items = services.map(service => ({
+  id: service.id,
+  item: (
+    <article key={service.id} className="service">
+      <span>{service.icon}</span>
+      <h6>{service.title}</h6>
+      <p>{service.info}</p>
+    </article>
+  )
+}));
 
 export default class Services extends Component {
   render() {
     return (
       <section className="services">
         <Title title="services" />
-        <div className="row">
-          <div className="services-center">
-            {services.map(item => {
-              return (
-                <div className="col-1-of-4">
-                  <article key={`item-${item.id}`} className="service">
-                    <span>{item.icon}</span>
-                    <h6>{item.title}</h6>
-                    <p>{item.info}</p>
-                  </article>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <Slider size={4} items={items} />
       </section>
     );
   }
