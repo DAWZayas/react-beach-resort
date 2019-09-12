@@ -45,7 +45,7 @@ const services = [
     icon: <FaTaxi />,
     title: "Airport transportation",
     info:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, minima."
+      "Lorem ipsum dolor sit amet consectetur adipisicing. Inventore, minima."
   },
   {
     id: 6,
@@ -63,16 +63,13 @@ const services = [
   }
 ];
 
-const items = services.map(service => ({
-  id: service.id,
-  item: (
-    <article key={service.id} className="service">
-      <span>{service.icon}</span>
-      <h6>{service.title}</h6>
-      <p>{service.info}</p>
-    </article>
-  )
-}));
+const items = services.map(service => (
+  <article key={service.id} className="service">
+    <span>{service.icon}</span>
+    <h6>{service.title}</h6>
+    <p>{service.info}</p>
+  </article>
+));
 
 export default class Services extends Component {
   render() {

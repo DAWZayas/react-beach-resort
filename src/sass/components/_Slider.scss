@@ -1,4 +1,44 @@
 .slider {
+  position: relative;
+  overflow: hidden;
+
+  &-transitioning-right {
+    [class^="col-"] {
+      animation: slideRight .5s ease-out 0.2s;
+    }
+
+    [class^="col-"]:first-child {
+      animation: slideRightFirst .5s ease-out 0.2s;
+    }
+  }
+
+  &-transitioning-left {
+    [class^="col-"] {
+      animation: slideLeft .5s ease-out 0.2s;
+    }
+
+    [class^="col-"]:last-child {
+      animation: slideLeftFirst .5s ease-out 0.2s;
+    }
+  }
+
+  [class^="col-"]:first-child {
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  [class^="col-"]:last-child {
+    position: absolute;
+    right: 0;
+    transform: translateX(+100%);
+  }
+
+  .col-without-margin {
+    margin-right: 0 !important;
+  }
+
+
   &-center {
     width: 90vw;
     margin: 0 auto;
