@@ -1,6 +1,6 @@
 import { rooms, services } from "../fake-data";
-import { Room } from "../types/room";
-import allKeysFilter from "./allKeysFilter";
+import { RoomFilter } from "../types/room";
+import allKeysFilter from "./filter";
 
 type JSONResponse<T> = {
   json: () => Promise<T>;
@@ -21,19 +21,21 @@ const mockFetch = <T>(url: string): Promise<JSONResponse<T>> =>
       const roomMatcher = url.match(/^\/rooms\??(:?filter=(.+))?/);
 
       if (roomMatcher) {
-        let filter: Partial<Room> = {};
+        let filter: RoomFilter = {};
         try {
           filter = JSON.parse(roomMatcher[2] || "{}");
         } catch {
           // Nothing
         } finally {
-          // @ts-ignore
-          return resolve(jsonRensonse(allKeysFilter(rooms, filter)));
+          return resolve(
+            // @ts-ignore
+            jsonRensonse(allKeysFilter(rooms, filter))
+          );
         }
       }
 
       reject("Invalid end point");
-    }, 5000);
+    }, 1000);
   });
 
 export default mockFetch;

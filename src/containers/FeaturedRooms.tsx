@@ -6,7 +6,7 @@ export default class FeaturedRoomsComponent extends Component {
   static contextType = RoomContext;
 
   render() {
-    const { loading, featuredRooms } = this.context as RoomContext;
+    const { loading, featuredRooms } = this.context;
 
     return <FeaturedRooms loading={loading} rooms={featuredRooms} />;
   }

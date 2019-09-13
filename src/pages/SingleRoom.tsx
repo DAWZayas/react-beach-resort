@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import Banner from "../components/Banner";
 import StyledHero from "../components/StyledHero";
-import { RoomContext } from "../context";
+import { RoomContext, RoomContextProps } from "../context";
 import defaultBcg from "../images/room-1.jpeg";
 
 type SingleRoomPageProps = RouteComponentProps<{ slug: string }>;
@@ -11,7 +11,7 @@ export default class SingleRoomPage extends Component<SingleRoomPageProps> {
   static contextType = RoomContext;
 
   render() {
-    const { getRoom } = this.context as RoomContext;
+    const { getRoom } = this.context as RoomContextProps;
     const room = getRoom(this.props.match.params.slug);
 
     if (!room) {
