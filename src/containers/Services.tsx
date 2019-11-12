@@ -1,18 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Icons from "react-icons/fa";
 import Services from "../components/Services";
-import { FetchService } from "../types/service";
+import { FetchService, Service } from "../types/service";
 import fetch from "../utils/mockFetch";
 
-class ServicesContainer extends React.Component {
-  state = {
-    services: []
-  };
+const ServicesContainer = () => {
+  const [services, setServices] = useState<Service[]>([]);
 
-  _isMounted = false;
-
-  componentDidMount() {
-    this._isMounted = true;
+  useEffect(() => {
     fetch<FetchService[]>("/services")
       .then(response => response.json())
       .then(services =>
@@ -26,22 +21,11 @@ class ServicesContainer extends React.Component {
         })
       )
       .then(services => {
-        if (this._isMounted) {
-          this.setState({
-            services
-          });
-        }
+        setServices((services as unknown[]) as Service[]);
       });
-  }
+  });
 
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
-  public render() {
-    const { services } = this.state;
-    return <Services services={services} />;
-  }
-}
+  return <Services services={services} />;
+};
 
 export default ServicesContainer;
