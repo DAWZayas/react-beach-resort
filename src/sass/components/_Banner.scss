@@ -1,0 +1,26 @@
+.banner {
+  @include absCenter;
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.5);
+  color: $main-white;
+  padding: 2rem 6rem;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: $main-spacing;
+
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  div {
+    width: 15rem;
+    height: 5px;
+    background: $primary-color;
+    margin: 1.7rem auto;
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}

@@ -1,0 +1,50 @@
+.services {
+  padding: 5rem 0;
+  background: $dark-grey;
+  text-align: center;
+
+  .service {
+    padding: 2rem;
+
+    span {
+      display: inline-block;
+      color: $primary-color;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h6 {
+      letter-spacing: $main-spacing;
+    }
+
+    p {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    &.placeholder {
+      span {
+        border-radius: 50%;
+        width: 5rem;
+        height: 5rem;
+        background: lighten($dark-grey, 5%);
+      }
+
+      h6,
+      p {
+        width: 100%;
+        background: $dark-grey;
+        background: linear-gradient(to right, lighten($dark-grey, 10%), $dark-grey, lighten($dark-grey, 10%));
+        animation-duration: 10s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+      }
+
+      p {
+        height: 8rem;
+      }
+    }
+  }
+}
