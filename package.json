@@ -7,6 +7,7 @@
     "@types/node": "12.7.4",
     "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
+    "netlify-lambda": "^1.6.3",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-icons": "^3.7.0",
@@ -16,6 +17,7 @@
     "typescript": "3.6.2"
   },
   "scripts": {
+    "postinstall": "netlify-lambda install",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,12 +44,14 @@
     "@testing-library/react": "^9.2.0",
     "@testing-library/user-event": "^7.1.1",
     "@types/faker": "^4.1.5",
+    "@types/http-proxy-middleware": "^0.19.3",
     "@types/react-router-dom": "^4.3.5",
     "@types/styled-components": "^4.1.19",
     "@types/testing-library__dom": "^6.4.0",
     "@types/testing-library__react": "^9.1.1",
     "@types/testing-library__user-event": "^4.1.1",
     "faker": "^4.1.0",
+    "http-proxy-middleware": "^0.20.0",
     "node-sass": "^4.12.0"
   }
 }

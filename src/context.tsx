@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Room, RoomFilter } from "./types/room";
-import fetch from "./utils/mockFetch";
+import mfetch from "./utils/mockFetch";
 
 export type RoomProviderState = {
   rooms: Room[];
@@ -40,18 +40,26 @@ class RoomProvider extends Component<{}, RoomProviderState> {
     if (room) {
       return room;
     }
-    const rooms = await fetch<Room[]>(
+    const rooms = await mfetch<Room[]>(
       `/rooms?filter=${JSON.stringify({ slug })}`
     ).then(response => response.json());
     return rooms[0];
   };
 
   getRooms = (filter: RoomFilter = {}) => {
-    this.setState({
-      loading: true
-    });
-    return fetch<Room[]>(`/rooms?filter=${JSON.stringify(filter)}`)
-      .then(response => response.json())
+    return fetch(
+      "https://react-beach-resort2.netlify.com/.netlify/functions/rooms",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(filter)
+      }
+    )
+      .then(response => {
+        return response.json();
+      })
       .then(rooms => {
         this.setState({
           loading: false
@@ -79,7 +87,6 @@ class RoomProvider extends Component<{}, RoomProviderState> {
 
   render() {
     const { loading, featuredRooms, rooms } = this.state;
-
     return (
       <RoomContext.Provider
         value={{
